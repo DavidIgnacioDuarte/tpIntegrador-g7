@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/Dear David/Desktop/Facultad/POO2/TEST DOUBLES/mockito/byte-buddy-1.10.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dear David/Desktop/Facultad/POO2/TEST DOUBLES/mockito/byte-buddy-1.10.10-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dear David/Desktop/Facultad/POO2/TEST DOUBLES/mockito/byte-buddy-1.10.10-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dear David/Desktop/Facultad/POO2/TEST DOUBLES/mockito/byte-buddy-agent-1.10.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dear David/Desktop/Facultad/POO2/TEST DOUBLES/mockito/byte-buddy-agent-1.10.10-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dear David/Desktop/Facultad/POO2/TEST DOUBLES/mockito/byte-buddy-agent-1.10.10-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dear David/Desktop/Facultad/POO2/TEST DOUBLES/mockito/mockito-core-3.3.12.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dear David/Desktop/Facultad/POO2/TEST DOUBLES/mockito/mockito-core-3.3.12-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dear David/Desktop/Facultad/POO2/TEST DOUBLES/mockito/mockito-core-3.3.12-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dear David/Desktop/Facultad/POO2/TEST DOUBLES/mockito/objenesis-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dear David/Desktop/Facultad/POO2/TEST DOUBLES/mockito/objenesis-3.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dear David/Desktop/Facultad/POO2/TEST DOUBLES/mockito/objenesis-3.1-sources.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
