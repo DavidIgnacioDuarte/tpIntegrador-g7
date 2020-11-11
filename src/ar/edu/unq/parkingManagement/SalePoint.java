@@ -8,7 +8,7 @@ public class SalePoint {
 	}
 	
 	
-	void rechargeCell(ApplicationUser client) {
+	void rechargeCell(AppUser client) {
 		
 	}
 	
