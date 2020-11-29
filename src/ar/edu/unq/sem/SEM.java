@@ -9,11 +9,24 @@ import java.util.Map;
 import ar.edu.unq.estacionamiento.Estacionamiento;
 
 public class SEM extends Observable {
+	private static SEM sem;
+	
 	private Map<Long, Double> nombreMap = new HashMap<Long, Double>();
 	private List<Estacionamiento> estacionamientos = new ArrayList<Estacionamiento>();
 	private List<ZonaDeEstacionamiento> zonas = new ArrayList<ZonaDeEstacionamiento>();
 	private List<Infraccion> infracciones = new ArrayList<Infraccion>();
 	private List<Compra> compras = new ArrayList<Compra>();
+		
+	//TODO mover esto a otra clase para no violar el principio de responsabilidad única.
+	private SEM() {}
+	
+	public static SEM getSEM() {
+		if(sem == null) {
+			sem = new SEM();
+		}
+		
+		return sem;
+	}
 	
 	public void agregarEstacionamiento(Estacionamiento estacionamiento) {
 		estacionamientos.add(estacionamiento);

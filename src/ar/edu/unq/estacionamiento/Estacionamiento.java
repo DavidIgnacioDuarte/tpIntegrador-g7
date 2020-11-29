@@ -19,7 +19,15 @@ public abstract class Estacionamiento {
 		return patente;
 	}
 	
+	public void setPatente(String patente) {
+		this.patente = patente;
+	}
+	
 	public LocalTime getHoraInicio() {
 		return horaInicio;
+	}
+	
+	public void setHoraFinal(LocalTime hora) {
+		horaFin = hora;
 	}
 }
