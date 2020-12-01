@@ -3,17 +3,19 @@ package ar.edu.unq.estacionamiento;
 import java.time.LocalTime;
 
 public abstract class Estacionamiento {
-	private Long nroTelefono;
-	private String patente;
-	private LocalTime horaInicio;
-	private LocalTime horaFin;
+	
+//	private Long nroTelefono; // [CAMBIO] -> en EstacionamientoApp
+	protected String patente;
+	protected LocalTime horaInicio;
+//	private LocalTime horaFin; // [CAMBIO] -> sólo en EstacionamientoCompraPuntual
 	
 	public abstract Boolean esVigente();
 	public abstract void terminarEstacionamiento(LocalTime hora);
 
-	public Long getNroTelefono() {
-		return nroTelefono;
-	}	
+	
+//	public Long getNroTelefono() {
+//		return nroTelefono;
+//	}	
 	
 	public String getPatente() {
 		return patente;
@@ -27,7 +29,8 @@ public abstract class Estacionamiento {
 		return horaInicio;
 	}
 	
-	public void setHoraFinal(LocalTime hora) {
-		horaFin = hora;
-	}
+//	public void setHoraFinal(LocalTime hora) {
+//		horaFin = hora;
+//	}
+	
 }

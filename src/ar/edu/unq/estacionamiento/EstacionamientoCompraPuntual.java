@@ -4,7 +4,12 @@ import java.time.LocalTime;
 
 public class EstacionamientoCompraPuntual extends Estacionamiento {
 	private Integer horas;
-	private LocalTime horaDeFin;
+	private LocalTime horaFinal;
+	
+	
+	public void setHoraFinal(LocalTime hora) {
+		horaFinal = hora;
+	}
 	
 	public EstacionamientoCompraPuntual(String patente, LocalTime horaFinal) {
 		super();
