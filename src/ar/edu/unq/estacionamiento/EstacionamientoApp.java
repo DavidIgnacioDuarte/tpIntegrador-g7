@@ -6,19 +6,23 @@ import ar.edu.unq.sem.SEM;
 
 public class EstacionamientoApp extends Estacionamiento {
 
-	long nroTelefono;
+	private Long nroTelefono;
 	
 	
-	@Override
-	public Boolean esVigente() {
-		return LocalTime.now().isBefore(this.horaMaxima());
+	public Long getNroTelefono() {
+		return nroTelefono;
 	}
-	
-	
+
+
+	public void setNroTelefono(Long nroTelefono) {
+		this.nroTelefono = nroTelefono;
+	}
+
+
 	public String informacionDeInicio() {
-		if(nroTelefono.getCredito() > 0) {
+		if(SEM.getSEM().getSaldo(this.nroTelefono) > 0) {
 			return "Inicio: " + horaInicio.toString() + " - Hora máxima de fin: " +
-					this.horaMaxima();
+					this.getHoraMaxFin();
 		}
 			else {
 				return "Saldo insuficiente. Estacionamiento no permitido.";
@@ -43,13 +47,25 @@ public class EstacionamientoApp extends Estacionamiento {
 	}
 	
 	
-	public LocalTime horaMaxima() {
-		Float costoHora = nroTelefono.getCredito() / SEM.getSEM().getPrecioPorHora();
-		int horas    = costoHora.intValue(); //Redondea siempre para abajo.
-		int minutos  = (int)((costoHora % 1) * 60);
-		int segundos = (int)((((costoHora % 1) * 60) % 1) * 60); 
-		LocalTime horaMaxima = horaInicio.plusHours(horas).plusMinutes(minutos).plusSeconds(segundos);
-		return horaMaxima;
+	@Override
+	public LocalTime getHoraMaxFin() {
+		if(this.horaMaxFin == null) {
+			Float costoHora = SEM.getSEM().getSaldo(this.nroTelefono) / SEM.getSEM().getPrecioPorHora();
+			int horas    = costoHora.intValue(); //Redondea siempre para abajo.
+			int minutos  = (int)((costoHora % 1) * 60);
+			int segundos = (int)((((costoHora % 1) * 60) % 1) * 60);
+			this.setHoraMaxFin(horaInicio.plusHours(horas).plusMinutes(minutos).plusSeconds(segundos));
+		}
+		return this.getHoraMaxFin();
+	}
+	
+	@Override
+	public void finalizarEstacionamiento() {
+		if(this.getEsActivo()) {
+			this.setHoraMaxFin(LocalTime.now());
+			SEM.getSEM().sistemaDeSaldos().descontarSaldo(this.getNroTelefono(), this.costo(this.getHoraInicio(), LocalTime.now()));
+			this.setEsActivo(false);
+		}
 	}
 	
 }
