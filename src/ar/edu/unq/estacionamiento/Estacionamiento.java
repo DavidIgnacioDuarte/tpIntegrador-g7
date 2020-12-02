@@ -4,7 +4,6 @@ import java.time.LocalTime;
 
 public abstract class Estacionamiento {
 	
-//	private Long nroTelefono; // [CAMBIO] -> en EstacionamientoApp
 	protected String patente;
 	protected LocalTime horaInicio;
 //	private LocalTime horaFin; // [CAMBIO] -> sólo en EstacionamientoCompraPuntual

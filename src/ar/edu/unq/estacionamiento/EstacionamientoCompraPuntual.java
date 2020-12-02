@@ -28,6 +28,6 @@ public class EstacionamientoCompraPuntual extends Estacionamiento {
 
 	@Override
 	public Boolean esVigente() {
-		return null;
+		return LocalTime.now().isBefore(horaFinal);
 	}
 }

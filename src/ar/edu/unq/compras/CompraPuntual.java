@@ -1,17 +1,26 @@
 package ar.edu.unq.compras;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+import ar.edu.unq.zona.PuntoDeVenta;
+
 public class CompraPuntual extends Compra {
 
-	double horasCompradas;
+	private double horasCompradas;
 	
 	
-	public CompraPuntual(int numeroC, PuntoDeVenta puntoDeVenta, LocalTime horaEfectuada, LocalDate fechaEfectuada, double cantidadHorasCompradas) {
-		super();
-		//TODO: Duda con el PuntoDeVenta.
+	public CompraPuntual(Integer numeroC, LocalTime horaEfectuada, LocalDate fechaEfectuada, PuntoDeVenta puntoDeVenta, double cantidadHorasCompradas) {
+		super(numeroC, horaEfectuada, fechaEfectuada, puntoDeVenta);
+		this.setHorasCompradas(cantidadHorasCompradas);
 	}
 	
-	public double getHoras() {
+	public double getHorasCompradas() {
 		return horasCompradas;
+	}
+	
+	public void setHorasCompradas(double horasCompradas) {
+		this.horasCompradas = horasCompradas;
 	}
 	
 }

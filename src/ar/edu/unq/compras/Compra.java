@@ -3,12 +3,22 @@ package ar.edu.unq.compras;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import ar.edu.unq.zona.PuntoDeVenta;
+
 public abstract class Compra {
 	
-	int numeroDeControl;
-	LocalTime horaEfectuada;
-	LocalDate fechaEfectuada;
+	private Integer numeroDeControl;
+	private LocalTime horaEfectuada;
+	private LocalDate fechaEfectuada;
+	private PuntoDeVenta puntoDeVenta;
 	
+	
+	public Compra(Integer numeroC, LocalTime horaEfectuada, LocalDate fechaEfectuada, PuntoDeVenta puntoDeVenta) {
+		this.setNumeroDeControl(numeroDeControl);
+		this.setHoraEfectuada(horaEfectuada);
+		this.setFechaEfectuada(fechaEfectuada);
+		this.setPuntoDeVenta(puntoDeVenta);
+	}
 	
 	public int getNumeroDeControl() {
 		return numeroDeControl;
@@ -35,6 +45,14 @@ public abstract class Compra {
 
 	public void setFechaEfectuada(LocalDate fechaEfectuada) {
 		this.fechaEfectuada = fechaEfectuada;
+	}
+	
+	public PuntoDeVenta getPuntoDeVenta() {
+		return puntoDeVenta;
+	}
+	
+	public void setPuntoDeVenta(PuntoDeVenta puntoDeVenta) {
+		this.puntoDeVenta = puntoDeVenta;
 	}
 	
 }
