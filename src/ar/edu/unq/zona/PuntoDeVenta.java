@@ -11,12 +11,12 @@ public class PuntoDeVenta {
 		//TODO
 	}
 	
-	public void iniciarEstacionamiento(String patente, LocalTime horaFinal) {
-		this.validarHora(horaFinal);
-		SEM.getSEM().agregarEstacionamiento(new EstacionamientoCompraPuntual(patente, horaFinal)); // Modificar Singleton con el SEM;
+	public void iniciarEstacionamiento(String patente, Integer horas) {
+		this.validarHora(horas);
+		SEM.getSEM().agregarEstacionamiento(new EstacionamientoCompraPuntual(patente, horas)); // Modificar Singleton con el SEM;
 	}
 	
-	private void validarHora(LocalTime horaFinal) {
+	private void validarHora(Integer horas) {
 		//TODO
 	}
 }
