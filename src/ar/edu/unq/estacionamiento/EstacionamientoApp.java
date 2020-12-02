@@ -52,5 +52,4 @@ public class EstacionamientoApp extends Estacionamiento {
 		return horaMaxima;
 	}
 	
-	
 }
