@@ -4,17 +4,24 @@ import java.time.LocalTime;
 
 public abstract class Estacionamiento {
 	
+	protected Boolean esActivo;
 	protected String patente;
 	protected LocalTime horaInicio;
-	protected LocalTime horaMaxFin;
-//	protected Boolean esActivo;
 
 	
-	public Boolean esVigente() {
-		return LocalTime.now().isBefore(this.getHoraMaxFin()) && this.getEsActivo();
+	protected Estacionamiento(String patente) {
+		super();
+		this.setPatente(patente);
+		this.setHoraInicio(LocalTime.now());
 	}
 	
-	public abstract void finalizarEstacionamiento();
+//	public abstract LocalTime horaMaximaDeFin();
+	protected abstract void finalizarEstacionamiento();
+	protected abstract LocalTime horaMaximaFin();
+	
+	public Boolean esVigente() {
+		return LocalTime.now().isBefore(this.horaMaximaFin());
+	}
 	
 	
 	public String getPatente() {
@@ -29,13 +36,6 @@ public abstract class Estacionamiento {
 	}
 	public void setHoraInicio(LocalTime horaInicio) {
 		this.horaInicio = horaInicio;
-	}
-	
-	public void setHoraMaxFin(LocalTime horaMaxFin) {
-		this.horaMaxFin = horaMaxFin;
-	}
-	public LocalTime getHoraMaxFin() {
-		return this.horaMaxFin;
 	}
 	
 	public Boolean getEsActivo() {

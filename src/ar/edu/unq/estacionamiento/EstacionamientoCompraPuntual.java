@@ -2,28 +2,34 @@ package ar.edu.unq.estacionamiento;
 
 import java.time.LocalTime;
 
+import ar.edu.unq.compras.CompraPuntual;
+import ar.edu.unq.sem.SEM;
+
 public class EstacionamientoCompraPuntual extends Estacionamiento {
+
+	private CompraPuntual habilitacionCompra;
+
 	
-	private Integer horas;
-	private LocalTime horaFinal;
-	
-	public void setHoraFinal(LocalTime hora) {
-		horaFinal = hora;
+	public EstacionamientoCompraPuntual(String patente, CompraPuntual habilitacionCompra) {
+		super(patente);
+		this.setHabilitacionCompra(habilitacionCompra);
 	}
-	
-	public EstacionamientoCompraPuntual(String patente, Integer horas) {
-		super();
-		this.setPatente(patente);
-		this.setHoraFinal(horaFinal);
-	}
-	
-	public void guardarEstacionamiento(String patente) {
-		//TODO
-	}	
 	
 	@Override
 	public void finalizarEstacionamiento() {
-		this.setEsActivo(false);
+		SEM.getSEM().finalizarEstacionamiento(this);
 	}
-
+	
+	@Override
+	public LocalTime horaMaximaFin() {
+		return this.getHoraInicio().minusHours(this.habilitacionCompra.getHorasCompradas()); 
+	}
+	
+	public CompraPuntual getHabilitacionCompra() {
+		return habilitacionCompra;
+	}
+	public void setHabilitacionCompra(CompraPuntual habilitacionCompra) {
+		this.habilitacionCompra = habilitacionCompra;
+	}
+		
 }

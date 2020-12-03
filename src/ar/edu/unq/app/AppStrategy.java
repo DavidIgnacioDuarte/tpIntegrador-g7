@@ -1,7 +1,7 @@
 package ar.edu.unq.app;
 
 public interface AppStrategy {
-	public void driving();
+	public void driving(AppUsuario app);
 
-	public void walking();
+	public void walking(AppUsuario app);
 }
