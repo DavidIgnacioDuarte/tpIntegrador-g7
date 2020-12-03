@@ -8,7 +8,7 @@ import ar.edu.unq.sem.SEM;
 public class PuntoDeVenta {
 	
 	public void recargarCelular(Long nroCelular, Double credito) {
-		//TODO
+		SEM.getSEM().getSistemaDeSaldos().recargarSaldo(nroCelular, credito);
 	}
 	
 	public void iniciarEstacionamiento(String patente, Integer horas) {
