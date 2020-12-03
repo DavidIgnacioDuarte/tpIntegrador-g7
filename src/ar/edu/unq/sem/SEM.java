@@ -11,8 +11,9 @@ import ar.edu.unq.inspector.Infraccion;
 
 public class SEM extends Observable {
 	private static SEM sem;
+	private SistemaDeSaldos sistemaSaldos = new SistemaDeSaldos();
 	
-	private Map<Long, Double> nombreMap = new HashMap<Long, Double>();
+//	private Map<Long, Double> nombreMap = new HashMap<Long, Double>();
 	private List<Estacionamiento> estacionamientos = new ArrayList<Estacionamiento>();
 	private List<ZonaDeEstacionamiento> zonas = new ArrayList<ZonaDeEstacionamiento>();
 	private List<Infraccion> infracciones = new ArrayList<Infraccion>();
