@@ -36,7 +36,7 @@ public class AppUsuario implements MovementSensor, CambioDeZona{
 	}
 	
 	public Double consultarSaldo() {
-		return SEM.getSEM().getSistemaDeSaldos().consultarSaldo(nroCelular);
+		return SEM.getSEM().getSistemaDeAsociaciones().consultarSaldo(nroCelular);
 	}
 
 	public Long getNroCelular() {

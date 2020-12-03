@@ -3,7 +3,7 @@ package ar.edu.unq.sem;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SistemaDeSaldos {
+public class SistemaDeAsociaciones {
 	private Map<Long, Double> nombreMap = new HashMap<Long, Double>();
 	
 	public void descontarSaldo(Long nroTelefono, Double saldo) {

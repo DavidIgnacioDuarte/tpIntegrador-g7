@@ -15,10 +15,10 @@ public class EstacionamientoCompraPuntual extends Estacionamiento {
 		this.setHabilitacionCompra(habilitacionCompra);
 	}
 	
-	@Override
-	public void finalizarEstacionamiento() {
-		SEM.getSEM().finalizarEstacionamiento(this);
-	}
+//	@Override
+//	public void finalizarEstacionamiento() {
+//		SEM.getSEM().finalizarEstacionamiento(this);
+//	}
 	
 	@Override
 	public LocalTime horaMaximaFin() {

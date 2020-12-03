@@ -31,13 +31,9 @@ public class AppInspector {
 		this.zonaACargo = zonaACargo;
 	}
 
-	public void recorrerZona() {
-		//this.zonaACargo.getEstacionamientos().forEach({estacionamiento => this.verificarVigencia(estacionamiento)})
-	}
-	
-	public void verificarVigencia(Estacionamiento estacionamiento) {
-		if(!estacionamiento.esVigente()) {
-			this.elevarInfraccion(estacionamiento.getPatente());
+	public void verificarVigencia(String patente) {
+		if(!SEM.getSEM().esVigente(patente)) {
+			this.elevarInfraccion(patente);
 		}
 	}
 	

@@ -20,7 +20,7 @@ import ar.edu.unq.zona.Zona;
 public class SEM extends Observable implements SensorDeVigencia {
 	private Integer numeroDeControl = 0;
 	private static SEM sem;
-	private SistemaDeSaldos sistemaSaldos = new SistemaDeSaldos();
+	private SistemaDeAsociaciones sistemaAsociaciones = new SistemaDeAsociaciones();
 	
 	private List<Estacionamiento> estacionamientos = new ArrayList<Estacionamiento>();
 	private List<Zona> zonas = new ArrayList<Zona>();
@@ -30,8 +30,8 @@ public class SEM extends Observable implements SensorDeVigencia {
 	//TODO mover esto a otra clase para no violar el principio de responsabilidad única.
 	private SEM() {}
 	
-	public SistemaDeSaldos getSistemaDeSaldos() {
-		return sistemaSaldos;
+	public SistemaDeAsociaciones getSistemaDeAsociaciones() {
+		return sistemaAsociaciones;
 	}
 	
 	public static SEM getSEM() {
@@ -48,15 +48,16 @@ public class SEM extends Observable implements SensorDeVigencia {
 	}
 	
 	public void finalizarEstacionamiento(Long nroCelular) {
-		Estacionamiento estacionamiento = this.estacionamientoConNum(nroCelular);
+		String patenteAsociada = this.getSistemaDeAsociaciones().getPatenteAsociadaA(nroCelular);
+		Estacionamiento estacionamiento = this.estacionamientoConPatente(patenteAsociada);
 		
 		estacionamientos.remove(estacionamiento);
 		this.notificar(estacionamiento);
 	}
 	
-	private Estacionamiento estacionamientoConNum(Long nroTelefono) {
+	private Estacionamiento estacionamientoConPatente(String patente) {
 		return estacionamientos.stream()
-				.filter(e -> e.getNroTelefono().equals(nroTelefono))
+				.filter(e -> e.getPatente().equals(patente))
 				.findFirst()
 				.get();
 	}

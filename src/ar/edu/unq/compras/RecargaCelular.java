@@ -1,10 +1,5 @@
 package ar.edu.unq.compras;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
-import com.sun.tools.javac.code.Source.Feature;
-
 import ar.edu.unq.zona.PuntoDeVenta;
 
 public class RecargaCelular extends Compra {
@@ -13,8 +8,8 @@ public class RecargaCelular extends Compra {
 	private long numeroDeCelularAsociado;
 	
 	
-	public RecargaCelular(int numeroC, LocalTime horaEfectuada, LocalDate fechaEfectuada, PuntoDeVenta puntoDeVenta, double montoRecargado, long numeroCelular) {
-		super(numeroC, horaEfectuada, fechaEfectuada, puntoDeVenta);
+	public RecargaCelular(int numeroC, PuntoDeVenta puntoDeVenta, double montoRecargado, long numeroCelular) {
+		super(numeroC, puntoDeVenta);
 		this.setMontoARecargar(montoRecargado);
 		this.setNumeroDeCelularAsociado(numeroCelular);
 	}
