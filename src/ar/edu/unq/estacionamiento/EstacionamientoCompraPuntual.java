@@ -31,5 +31,5 @@ public class EstacionamientoCompraPuntual extends Estacionamiento {
 	public void setHabilitacionCompra(CompraPuntual habilitacionCompra) {
 		this.habilitacionCompra = habilitacionCompra;
 	}
-		
+	
 }
