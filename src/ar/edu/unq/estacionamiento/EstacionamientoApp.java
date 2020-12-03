@@ -12,18 +12,18 @@ public class EstacionamientoApp extends Estacionamiento {
 	
 	public EstacionamientoApp(String patente) {
 		super(patente);
-		this.setNroTelefono(SEM.getSEM().getSistemaDeCelulares().getCelularAsociadoA(patente));
+		this.setNroTelefono(SEM.getSEM().getSistemaDeAsociaciones().getCelularAsociadoA(patente));
 	}
 	
-	@Override
-	public void finalizarEstacionamiento() {
-			SEM.getSEM().getSistemaDeCelulares().descontarSaldo(this.getNroTelefono(), this.costoActual());
-			SEM.getSEM().finalizarEstacionamiento(this);
-	}
+//	@Override
+//	public void finalizarEstacionamiento() {
+//			SEM.getSEM().getSistemaDeSaldos().descontarSaldo(this.getNroTelefono(), this.costoActual());
+//			SEM.getSEM().finalizarEstacionamiento(this);
+//	}
 	
 	@Override
 	public LocalTime horaMaximaFin() {
-		Double saldo = SEM.getSEM().getSistemaDeCelulares().getSaldoAsociadoA(this.nroTelefono);
+		Double saldo = SEM.getSEM().getSistemaDeAsociaciones().getSaldoAsociadoA(this.nroTelefono);
 		Long saldoPorSegundos = (long)(saldo * 3600 / SEM.getSEM().getPrecioPorHora());
 		LocalTime horaMax = LocalTime.now().plusSeconds(saldoPorSegundos);
 		return horaMax;
@@ -46,7 +46,7 @@ public class EstacionamientoApp extends Estacionamiento {
 
 
 	public String informacionDeInicio() {
-		if(SEM.getSEM().getSistemaDeCelulares().getSaldoAsociadoA(this.nroTelefono) > 0) {
+		if(SEM.getSEM().getSistemaDeAsociaciones().getSaldoAsociadoA(this.nroTelefono) > 0) {
 			return "Inicio: " + horaInicio.toString() + " - Hora máxima de fin: " +
 					this.horaMaximaFin();
 		}

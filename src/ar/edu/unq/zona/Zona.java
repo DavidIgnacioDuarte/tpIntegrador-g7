@@ -14,4 +14,8 @@ public class Zona {
 		puntosDeVenta.add(pdv);
 
 	}
+
+	public AppInspector getInspector() {
+		return inspector;
+	}
 }

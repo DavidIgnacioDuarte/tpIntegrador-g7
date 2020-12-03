@@ -14,9 +14,7 @@ public abstract class Estacionamiento {
 		this.setPatente(patente);
 		this.setHoraInicio(LocalTime.now());
 	}
-	
-//	public abstract LocalTime horaMaximaDeFin();
-	protected abstract void finalizarEstacionamiento();
+
 	protected abstract LocalTime horaMaximaFin();
 	
 	public Boolean esVigente() {
