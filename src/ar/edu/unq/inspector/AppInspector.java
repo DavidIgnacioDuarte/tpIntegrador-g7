@@ -1,6 +1,5 @@
 package ar.edu.unq.inspector;
 
-import ar.edu.unq.estacionamiento.Estacionamiento;
 import ar.edu.unq.sem.SEM;
 import ar.edu.unq.zona.Zona;
 

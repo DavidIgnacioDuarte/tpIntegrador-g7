@@ -1,7 +1,6 @@
 package ar.edu.unq.estacionamiento;
 
 import java.time.LocalTime;
-import java.util.HashMap;
 
 import ar.edu.unq.sem.SEM;
 
