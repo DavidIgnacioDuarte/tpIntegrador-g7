@@ -3,8 +3,7 @@ package ar.edu.unq.estacionamiento;
 import java.time.LocalTime;
 
 public abstract class Estacionamiento {
-	
-	protected Boolean esActivo;
+
 	protected String patente;
 	protected LocalTime horaInicio;
 
@@ -34,13 +33,6 @@ public abstract class Estacionamiento {
 	}
 	public void setHoraInicio(LocalTime horaInicio) {
 		this.horaInicio = horaInicio;
-	}
-	
-	public Boolean getEsActivo() {
-		return esActivo;
-	}
-	public void setEsActivo(Boolean esActivo) {
-		this.esActivo = esActivo;
 	}
 	
 }

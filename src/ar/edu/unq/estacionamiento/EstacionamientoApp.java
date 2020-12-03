@@ -14,12 +14,6 @@ public class EstacionamientoApp extends Estacionamiento {
 		this.setNroTelefono(SEM.getSEM().getSistemaDeAsociaciones().getCelularAsociadoA(patente));
 	}
 	
-//	@Override
-//	public void finalizarEstacionamiento() {
-//			SEM.getSEM().getSistemaDeSaldos().descontarSaldo(this.getNroTelefono(), this.costoActual());
-//			SEM.getSEM().finalizarEstacionamiento(this);
-//	}
-	
 	@Override
 	public LocalTime horaMaximaFin() {
 		Double saldo = SEM.getSEM().getSistemaDeAsociaciones().getSaldoAsociadoA(this.nroTelefono);
