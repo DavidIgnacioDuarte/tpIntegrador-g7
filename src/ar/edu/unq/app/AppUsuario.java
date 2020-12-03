@@ -2,8 +2,6 @@ package ar.edu.unq.app;
 import ar.edu.unq.tools.*;
 import ar.edu.unq.zona.*;
 
-import java.time.LocalTime;
-
 import ar.edu.unq.estacionamiento.EstacionamientoApp;
 import ar.edu.unq.sem.SEM;
 
@@ -11,7 +9,7 @@ public class AppUsuario implements MovementSensor, CambioDeZona{
 	private Long nroCelular;
 	private String patente;
 	private AppStrategy modo;
-	// private boolean isDriving;
+	private Boolean asistenciaAlUsuario;
 	private Zona zonaActualParado;
 	
 	public AppUsuario(Long nroCelular, String patente) {
@@ -43,6 +41,22 @@ public class AppUsuario implements MovementSensor, CambioDeZona{
 		return nroCelular;
 	}
 	
+	public void activarAsistenciaAlUsuario() {
+		this.asistenciaAlUsuario = true;
+	}
+	
+	public void desactivarAsistenciaAlUsuario() {
+		this.asistenciaAlUsuario = false;
+	}
+	
+	public Boolean estaActivaAsistenciaAlUsuario() {
+		return asistenciaAlUsuario;
+	}
+	
+	public Boolean hayEstacionamientoEnCurso() {
+		return SEM.getSEM().esVigente(patente);
+	}
+	
 	@Override
 	public void cambiarZona(Zona zona) {
 		this.zonaActualParado = zona;
@@ -53,6 +67,13 @@ public class AppUsuario implements MovementSensor, CambioDeZona{
 	public void salirDeZona() {
 		this.zonaActualParado = null;
 	}
-	
+
+	public Zona getZonaActualParado() {
+		return zonaActualParado;
+	}
+
+	public Boolean estaEnZonaValida() {
+		return this.zonaActualParado != null;
+	}
 
 }

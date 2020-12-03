@@ -3,7 +3,6 @@ package ar.edu.unq.estacionamiento;
 import java.time.LocalTime;
 
 import ar.edu.unq.compras.CompraPuntual;
-import ar.edu.unq.sem.SEM;
 
 public class EstacionamientoCompraPuntual extends Estacionamiento {
 
@@ -14,11 +13,6 @@ public class EstacionamientoCompraPuntual extends Estacionamiento {
 		super(patente);
 		this.setHabilitacionCompra(habilitacionCompra);
 	}
-	
-//	@Override
-//	public void finalizarEstacionamiento() {
-//		SEM.getSEM().finalizarEstacionamiento(this);
-//	}
 	
 	@Override
 	public LocalTime horaMaximaFin() {

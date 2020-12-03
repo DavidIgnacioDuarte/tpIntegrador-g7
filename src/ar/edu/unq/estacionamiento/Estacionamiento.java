@@ -15,8 +15,6 @@ public abstract class Estacionamiento {
 		this.setHoraInicio(LocalTime.now());
 	}
 
-	
-//	protected abstract void finalizarEstacionamiento();
 	protected abstract LocalTime horaMaximaFin();
 	
 	public Boolean esVigente() {

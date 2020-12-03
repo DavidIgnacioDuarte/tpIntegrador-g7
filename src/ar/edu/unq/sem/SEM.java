@@ -1,13 +1,7 @@
 package ar.edu.unq.sem;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import ar.edu.unq.compras.Compra;
@@ -21,6 +15,7 @@ public class SEM extends Observable implements SensorDeVigencia {
 	private Integer numeroDeControl = 0;
 	private static SEM sem;
 	private SistemaDeAsociaciones sistemaAsociaciones = new SistemaDeAsociaciones();
+	private Double precioPorHora;
 	
 	private List<Estacionamiento> estacionamientos = new ArrayList<Estacionamiento>();
 	private List<Zona> zonas = new ArrayList<Zona>();
@@ -84,6 +79,18 @@ public class SEM extends Observable implements SensorDeVigencia {
 	
 	public Integer getNumeroDeControl() {		
 		return numeroDeControl;
+	}
+
+	public void setPrecioPorHora(Double precioPorHora) {
+		this.precioPorHora = precioPorHora;
+	}
+	
+	public Double getPrecioPorHora() {
+		return precioPorHora;
+	}
+
+	public Boolean esVigente(String patente) {
+		return estacionamientos.stream().anyMatch(e -> e.getPatente().equals(patente));
 	}
 }
 
