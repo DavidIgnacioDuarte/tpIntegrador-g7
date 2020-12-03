@@ -19,7 +19,7 @@ public class PuntoDeVenta {
 	}
 	
 	public void iniciarEstacionamiento(String patente, Integer horas) {
-		CompraPuntual compra =  new CompraPuntual(SEM.getSEM().siguienteNC(), this, horas);
+		CompraPuntual compra =  new CompraPuntual(SEM.getSEM().getNumeroDeControl(), this, horas);
 		SEM.getSEM().agregarEstacionamiento(new EstacionamientoCompraPuntual(patente, compra));
 		SEM.getSEM().agregarCompra(compra);
 	}

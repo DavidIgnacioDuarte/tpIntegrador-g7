@@ -1,4 +1,4 @@
-package ar.edu.unq.sem;
+package ar.edu.unq.observer;
 
 import java.util.ArrayList;
 import java.util.List;

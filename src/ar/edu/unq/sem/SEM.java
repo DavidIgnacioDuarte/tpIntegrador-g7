@@ -2,21 +2,26 @@ package ar.edu.unq.sem;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import ar.edu.unq.compras.Compra;
 import ar.edu.unq.estacionamiento.Estacionamiento;
 import ar.edu.unq.inspector.Infraccion;
+import ar.edu.unq.observer.Observable;
+import ar.edu.unq.sensorDeVigencia.SensorDeVigencia;
 import ar.edu.unq.zona.Zona;
 
-public class SEM extends Observable {
+public class SEM extends Observable implements SensorDeVigencia {
+	private Integer numeroDeControl = 0;
 	private static SEM sem;
 	private SistemaDeSaldos sistemaSaldos = new SistemaDeSaldos();
 	
-//	private Map<Long, Double> nombreMap = new HashMap<Long, Double>();
 	private List<Estacionamiento> estacionamientos = new ArrayList<Estacionamiento>();
 	private List<Zona> zonas = new ArrayList<Zona>();
 	private List<Infraccion> infracciones = new ArrayList<Infraccion>();
@@ -42,12 +47,18 @@ public class SEM extends Observable {
 		this.notificar(estacionamiento);
 	}
 	
-	public void terminarEstacionamiento(Long nroTelefono, LocalTime hora) {
-//		TODO: mejorar esta lógica
-		Estacionamiento estacionamiento = this.estacionamientoConNum(nroTelefono);
+	public void finalizarEstacionamiento(Long nroCelular) {
+		Estacionamiento estacionamiento = this.estacionamientoConNum(nroCelular);
 		
-		estacionamiento.terminarEstacionamiento(hora);
+		estacionamientos.remove(estacionamiento);
 		this.notificar(estacionamiento);
+	}
+	
+	private Estacionamiento estacionamientoConNum(Long nroTelefono) {
+		return estacionamientos.stream()
+				.filter(e -> e.getNroTelefono().equals(nroTelefono))
+				.findFirst()
+				.get();
 	}
 	
 	public void agregarZona(Zona zona) {
@@ -58,11 +69,20 @@ public class SEM extends Observable {
 		infracciones.add(infraccion);
 	}
 	
-	private Estacionamiento estacionamientoConNum(Long nroTelefono) {
-		return estacionamientos.stream()
-			.filter(e -> e.getNroTelefono() == nroTelefono && e.getEsVigente())
-			.findFirst()
-			.get();																// Revisar esto
+	public void agregarCompra(Compra compra) {
+		compras.add(compra);
+		numeroDeControl++;
+	}
+	
+	@Override
+	public void determinarVigencia() {
+		estacionamientos = estacionamientos.stream()
+			.filter(e -> e.esVigente())
+			.collect(Collectors.toList());
+	}
+	
+	public Integer getNumeroDeControl() {		
+		return numeroDeControl;
 	}
 }
 
