@@ -14,7 +14,7 @@ import ar.edu.unq.zona.Zona;
 public class SEM extends Observable implements SensorDeVigencia {
 	private Integer numeroDeControl = 0;
 	private static SEM sem;
-	private SistemaDeAsociaciones sistemaAsociaciones = new SistemaDeAsociaciones();
+	private SistemaDeAsociaciones sistemaAsociaciones;
 	private Double precioPorHora;
 	
 	private List<Estacionamiento> estacionamientos = new ArrayList<Estacionamiento>();
@@ -22,7 +22,6 @@ public class SEM extends Observable implements SensorDeVigencia {
 	private List<Infraccion> infracciones = new ArrayList<Infraccion>();
 	private List<Compra> compras = new ArrayList<Compra>();
 		
-	//TODO mover esto a otra clase para no violar el principio de responsabilidad única.
 	private SEM() {}
 	
 	public SistemaDeAsociaciones getSistemaDeAsociaciones() {
@@ -91,6 +90,14 @@ public class SEM extends Observable implements SensorDeVigencia {
 
 	public Boolean esVigente(String patente) {
 		return estacionamientos.stream().anyMatch(e -> e.getPatente().equals(patente));
+	}
+	
+	public void setSistemaDeAsociaciones(SistemaDeAsociaciones sistemaAsoc) {
+		sistemaAsociaciones = sistemaAsoc;
+	}
+	
+	public List<Estacionamiento> getEstacionamientos() {
+		return estacionamientos;
 	}
 }
 
