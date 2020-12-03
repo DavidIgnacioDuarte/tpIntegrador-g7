@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import ar.edu.unq.estacionamiento.Estacionamiento;
+import ar.edu.unq.inspector.Infraccion;
 
 public class SEM extends Observable {
 	private static SEM sem;
