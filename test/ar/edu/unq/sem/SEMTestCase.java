@@ -18,9 +18,6 @@ public class SEMTestCase {
 	
 	@BeforeEach
 	public void setUp() {
-//		SEM sem = SEM.getSEM();
-//		SistemaDeAsociaciones sistemaAsoc = new SistemaDeAsociaciones(); //mock(SistemaDeAsociaciones.class);
-//		SEM.getSEM().setSistemaDeAsociaciones(sistemaAsoc);
 		sistemaAsoc = new SistemaDeAsociaciones();
 		SEM.getSEM().setSistemaDeAsociaciones(sistemaAsoc);
 	}
@@ -83,12 +80,28 @@ public class SEMTestCase {
 		assertTrue(SEM.getSEM().getZonas().contains(zona));
 	}
 	
+	@Test
 	public void agregarInfraccionTest() {
 		Infraccion infraccion = mock(Infraccion.class);
 		
 		SEM.getSEM().agregarInfraccion(infraccion);
 		
 		assertTrue(SEM.getSEM().getInfracciones().contains(infraccion));
+	}
+	
+	@Test
+	public void numeroDeControlTest() {
+		assertEquals(0, SEM.getSEM().getNumeroDeControl());
+	}
+	
+	@Test void getPrecioPorHoraTest() {
+		SEM.getSEM().setPrecioPorHora(30d);
+		
+		assertEquals(30d, SEM.getSEM().getPrecioPorHora());
+	}
+	
+	@Test void esVigenteTest() {
+		//TODO
 	}
 }
 
