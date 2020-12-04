@@ -49,7 +49,7 @@ public class SEM extends Observable implements SensorDeVigencia {
 		this.notificar(estacionamiento);
 	}
 	
-	private Estacionamiento estacionamientoConPatente(String patente) {
+	public Estacionamiento estacionamientoConPatente(String patente) {
 		return estacionamientos.stream()
 				.filter(e -> e.getPatente().equals(patente))
 				.findFirst()
@@ -98,6 +98,14 @@ public class SEM extends Observable implements SensorDeVigencia {
 	
 	public List<Estacionamiento> getEstacionamientos() {
 		return estacionamientos;
+	}
+	
+	public List<Zona> getZonas() {
+		return zonas;
+	}
+	
+	public List<Infraccion> getInfracciones() {
+		return infracciones;
 	}
 }
 

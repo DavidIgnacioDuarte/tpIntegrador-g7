@@ -8,6 +8,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.estacionamiento.Estacionamiento;
+import ar.edu.unq.estacionamiento.EstacionamientoApp;
+import ar.edu.unq.inspector.AppInspector;
+import ar.edu.unq.inspector.Infraccion;
+import ar.edu.unq.zona.Zona;
 
 public class SEMTestCase {
 	private SistemaDeAsociaciones sistemaAsoc;
@@ -17,6 +21,8 @@ public class SEMTestCase {
 //		SEM sem = SEM.getSEM();
 //		SistemaDeAsociaciones sistemaAsoc = new SistemaDeAsociaciones(); //mock(SistemaDeAsociaciones.class);
 //		SEM.getSEM().setSistemaDeAsociaciones(sistemaAsoc);
+		sistemaAsoc = new SistemaDeAsociaciones();
+		SEM.getSEM().setSistemaDeAsociaciones(sistemaAsoc);
 	}
 	
 	@Test
@@ -58,7 +64,32 @@ public class SEMTestCase {
 //		
 //	}
 	
+	@Test
+	public void estacionamientoConPatenteTest() {
+		Estacionamiento estacionamiento = new EstacionamientoApp("ABC-123");
+		
+		SEM.getSEM().agregarEstacionamiento(estacionamiento);
+		//TODO
+		assertEquals(estacionamiento, SEM.getSEM().estacionamientoConPatente("ABC-123"));
+	}
 	
+	@Test
+	public void agregarZonaTest() {
+		AppInspector appInspector = mock(AppInspector.class);
+		Zona zona = new Zona(appInspector);
+		
+		SEM.getSEM().agregarZona(zona);
+		
+		assertTrue(SEM.getSEM().getZonas().contains(zona));
+	}
+	
+	public void agregarInfraccionTest() {
+		Infraccion infraccion = mock(Infraccion.class);
+		
+		SEM.getSEM().agregarInfraccion(infraccion);
+		
+		assertTrue(SEM.getSEM().getInfracciones().contains(infraccion));
+	}
 }
 
 
