@@ -37,12 +37,16 @@ public class SistemaDeAsociaciones {
 		if(saldos.containsKey(nroTelefono)) {
 			saldos.replace(nroTelefono, this.consultarSaldo(nroTelefono) + saldo);
 		} else {
-			this.agregarAlSistema(nroTelefono, saldo);
+			this.agregarAlSistemaDeSaldos(nroTelefono, saldo);
 		}
 	}
 	
-	public void agregarAlSistema(Long nroTelefono, Double saldo) {
+	public void agregarAlSistemaDeSaldos(Long nroTelefono, Double saldo) {
 		saldos.put(nroTelefono, saldo);
+	}
+	
+	public void agregarAlSistemaDePatentes(Long nroTelefono, String patente) {
+		patentes.put(nroTelefono, patente);
 	}
 
 	public String getPatenteAsociadaA(Long nroCelular) {
