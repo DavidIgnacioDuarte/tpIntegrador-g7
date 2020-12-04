@@ -23,9 +23,10 @@ public class InspectorTest {
 	@Before
 	public void setUp() {
 		
+		SEM.clearSEM();
+		
 		zonaACargo = mock(Zona.class);
 		inspector = new AppInspector("Carlos", zonaACargo);
-
 		
 	}
 	
