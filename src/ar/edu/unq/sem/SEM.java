@@ -92,6 +92,10 @@ public class SEM extends Observable implements SensorDeVigencia {
 	public Boolean esVigente(String patente) {
 		return estacionamientos.stream().anyMatch(e -> e.getPatente().equals(patente));
 	}
+	
+	public Integer cantidadEstacionamientosVigentes() {
+		return estacionamientos.size();
+	}
 }
 
 

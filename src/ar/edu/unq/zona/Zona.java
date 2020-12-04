@@ -16,6 +16,10 @@ public class Zona {
 	}
 
 	public AppInspector getInspector() {
-		return inspector;
+		return this.inspector;
+	}
+	
+	public Integer cantidadPDV() {
+		return puntosDeVenta.size();
 	}
 }

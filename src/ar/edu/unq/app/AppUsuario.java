@@ -38,7 +38,7 @@ public class AppUsuario implements MovementSensor, CambioDeZona{
 	}
 
 	public Long getNroCelular() {
-		return nroCelular;
+		return this.nroCelular;
 	}
 	
 	public void activarAsistenciaAlUsuario() {

@@ -1,5 +1,7 @@
 package ar.edu.unq.zona;
 
+import static org.junit.Assert.assertTrue;
+
 import ar.edu.unq.compras.CompraPuntual;
 import ar.edu.unq.estacionamiento.EstacionamientoCompraPuntual;
 import ar.edu.unq.sem.SEM;

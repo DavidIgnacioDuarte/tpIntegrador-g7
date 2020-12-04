@@ -14,7 +14,7 @@ public abstract class Compra {
 	
 	
 	public Compra(Integer numeroC, PuntoDeVenta puntoDeVenta) {
-		this.setNumeroDeControl(numeroDeControl);
+		this.setNumeroDeControl(numeroC);
 		this.setHoraEfectuada(LocalTime.now());
 		this.setFechaEfectuada(LocalDate.now());
 		this.setPuntoDeVenta(puntoDeVenta);
