@@ -2,16 +2,12 @@ package ar.edu.unq.estacionamiento;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 import java.time.LocalTime;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
-
-import ar.edu.unq.compras.RecargaCelular;
 import ar.edu.unq.sem.SEM;
 import ar.edu.unq.sem.SistemaDeAsociaciones;
 import ar.edu.unq.zona.PuntoDeVenta;
@@ -67,12 +63,6 @@ public class EstacionamientoAppTest {
 		SEM.getSEM().setPrecioPorHora(50d);
 		
 		assertEquals(estacionamientoApp.getHoraInicio().plusHours(1).getHour(), estacionamientoApp.horaMaximaFin().getHour());
-		
-		//LocalTime horaActual = mock(LocalTime.class);
-		
-		//when(LocalTime.now()).thenReturn(estacionamientoApp.getHoraInicio().plusHours(1));
-		
-		//assertTrue(estacionamientoApp.costoActual().equals(50d));
 		
 	}
 	
