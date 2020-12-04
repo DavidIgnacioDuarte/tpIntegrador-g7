@@ -4,28 +4,28 @@ import ar.edu.unq.zona.PuntoDeVenta;
 
 public class RecargaCelular extends Compra {
 	
-	private double montoARecargar;
-	private long numeroDeCelularAsociado;
+	private Double montoARecargar;
+	private Long numeroDeCelularAsociado;
 	
 	
-	public RecargaCelular(int numeroC, PuntoDeVenta puntoDeVenta, double montoRecargado, long numeroCelular) {
+	public RecargaCelular(Integer numeroC, PuntoDeVenta puntoDeVenta, Double montoRecargado, Long numeroCelular) {
 		super(numeroC, puntoDeVenta);
 		this.setMontoARecargar(montoRecargado);
 		this.setNumeroDeCelularAsociado(numeroCelular);
 	}
 	
-	public void setMontoARecargar(double montoARecargar) {
+	public void setMontoARecargar(Double montoARecargar) {
 		this.montoARecargar = montoARecargar;
 	}
 
-	public void setNumeroDeCelularAsociado(long numeroDeCelularAsociado) {
+	public void setNumeroDeCelularAsociado(Long numeroDeCelularAsociado) {
 		this.numeroDeCelularAsociado = numeroDeCelularAsociado;
 	}
 
-	public double getMontoARecargar() {
+	public Double getMontoARecargar() {
 		return montoARecargar;
 	}
-	public long getNumeroDeCelularAsociado() {
+	public Long getNumeroDeCelularAsociado() {
 		return numeroDeCelularAsociado;
 	}
 	

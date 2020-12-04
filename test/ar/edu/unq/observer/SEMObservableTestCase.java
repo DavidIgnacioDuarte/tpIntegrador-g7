@@ -1,8 +1,10 @@
 package ar.edu.unq.observer;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.estacionamiento.Estacionamiento;
@@ -12,6 +14,14 @@ public class SEMObservableTestCase {
 	
 	Observer observer1;
 	Observer observer2;
+	
+	@BeforeEach
+	public void setUp() {
+		
+		SEM.clearSEM();
+		
+	}
+	
 	
 	@Test
 	public void agregarSuscriptor() {
@@ -25,7 +35,7 @@ public class SEMObservableTestCase {
 		SEM.getSEM().suscribir(observer1);
 		SEM.getSEM().desuscribir(observer1);
 		
-		assertTrue(!SEM.getSEM().getSuscriptores().contains(observer1));
+		assertFalse(SEM.getSEM().getSuscriptores().contains(observer1));
 	}
 	
 	@Test public void notificarTest() {

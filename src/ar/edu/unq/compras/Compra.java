@@ -20,7 +20,7 @@ public abstract class Compra {
 		this.setPuntoDeVenta(puntoDeVenta);
 	}
 	
-	public int getNumeroDeControl() {
+	public Integer getNumeroDeControl() {
 		return numeroDeControl;
 	}
 	

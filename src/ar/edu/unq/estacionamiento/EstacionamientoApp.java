@@ -50,9 +50,8 @@ public class EstacionamientoApp extends Estacionamiento {
 	
 	public String informacionDeFin() {
 		LocalTime fin = LocalTime.now();
-		return "Inicio: " + horaInicio.toString() + " -Fin: " +
-			   fin.toString() + " - Duración: " + (fin.getHour() - horaInicio.getHour()) + 
-			   " - Costo: " + this.costoActual();
+		return "Inicio: " + horaInicio.toString() + " -Fin: " + fin.toString() + " - Duración: " + 
+				(fin.getHour() - horaInicio.getHour()) +  " - Costo: " + this.costoActual();
 	}
 	
 	
