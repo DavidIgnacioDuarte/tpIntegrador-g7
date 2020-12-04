@@ -19,4 +19,8 @@ public abstract class Observable {
 			s.update(param);
 		}
 	}
+	
+	public List<Observer> getSuscriptores() {
+		return suscriptores;
+	}
 }
