@@ -1,6 +1,7 @@
 package ar.edu.unq.estacionamiento;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 import java.time.LocalTime;
@@ -11,7 +12,6 @@ import org.junit.Test;
 import ar.edu.unq.compras.CompraPuntual;
 
 public class EstacionamientoCompraPuntualTest {
-
 	
 	//private PuntoDeVenta puntoDeVenta;
 	private CompraPuntual compraHabilitacion;
@@ -31,13 +31,21 @@ public class EstacionamientoCompraPuntualTest {
 	@Test
 	public void constructorTest() {
 		
-		assertEquals(estacionamientoPuntual.getPatente(), "ABC-123");
-		assertEquals(estacionamientoPuntual.getHoraInicio().getHour(), LocalTime.now().getHour());
-		assertEquals(estacionamientoPuntual.getHoraInicio().getMinute(), LocalTime.now().getMinute());
-		assertEquals(estacionamientoPuntual.getHabilitacionCompra(), this.compraHabilitacion);
+		assertEquals("ABC-123", estacionamientoPuntual.getPatente());
+		assertEquals(LocalTime.now().getHour(), estacionamientoPuntual.getHoraInicio().getHour());
+		assertEquals(LocalTime.now().getMinute(), estacionamientoPuntual.getHoraInicio().getMinute());
+		assertEquals(this.compraHabilitacion, estacionamientoPuntual.getHabilitacionCompra());
+		
+		assertTrue(estacionamientoPuntual.esVigente());
 		
 	}
 	
 	
+	@Test
+	public void horaMaximaFinTest() {
+		
+		assertEquals(estacionamientoPuntual.getHoraInicio().plusHours(compraHabilitacion.getHorasCompradas()), estacionamientoPuntual.horaMaximaFin());
+		
+	}
 	
 }

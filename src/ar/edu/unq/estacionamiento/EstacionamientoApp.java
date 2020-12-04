@@ -18,11 +18,11 @@ public class EstacionamientoApp extends Estacionamiento {
 	public LocalTime horaMaximaFin() {
 		Double saldo = SEM.getSEM().getSistemaDeAsociaciones().getSaldoAsociadoA(this.nroTelefono);
 		Long saldoPorSegundos = (long)(saldo * 3600 / SEM.getSEM().getPrecioPorHora());
-		LocalTime horaMax = LocalTime.now().plusSeconds(saldoPorSegundos);
+		LocalTime horaMax = this.getHoraInicio().plusSeconds(saldoPorSegundos);
 		return horaMax;
 	}
 	
-	private Double costoActual() {
+	public Double costoActual() {
 		Integer tiempoACobrarEnSegundos = LocalTime.now().toSecondOfDay() - this.getHoraInicio().toSecondOfDay();
 		Double precioPorSegundo = SEM.getSEM().getPrecioPorHora() / 3600;
 		Double costo = tiempoACobrarEnSegundos * precioPorSegundo;
