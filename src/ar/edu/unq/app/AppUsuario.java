@@ -11,6 +11,7 @@ public class AppUsuario implements MovementSensor, CambioDeZona{
 	private AppStrategy modo;
 	private Boolean asistenciaAlUsuario;
 	private Zona zonaActualParado;
+	private String ultimaNotificacion;
 	
 	public AppUsuario(Long nroCelular, String patente) {
 		this.patente = patente;
@@ -79,6 +80,14 @@ public class AppUsuario implements MovementSensor, CambioDeZona{
 
 	public Boolean estaEnZonaValida() {
 		return this.zonaActualParado != null;
+	}
+
+	public void notificar(String notificacion) {
+		this.ultimaNotificacion = notificacion;
+	}
+
+	public String getUltimaNotificacion() {
+		return ultimaNotificacion;
 	}
 
 }

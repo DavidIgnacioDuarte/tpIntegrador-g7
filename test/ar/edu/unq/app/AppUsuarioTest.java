@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import ar.edu.unq.sem.SEM;
 import ar.edu.unq.zona.Zona;
 
 class AppUsuarioTest {
@@ -57,15 +55,5 @@ class AppUsuarioTest {
 		assertTrue(app.estaEnZonaValida());
 		app.salirDeZona();
 		assertFalse(app.estaEnZonaValida());
-	}
-	
-	@Test
-	void testDesplazamiento() {
-		ModoAutomatico modo = new ModoAutomatico();
-		app.setModo(modo);
-		app.driving();
-		assertFalse(app.hayEstacionamientoEnCurso());
-		app.walking();
-		assertTrue(app.hayEstacionamientoEnCurso());
 	}
 }
