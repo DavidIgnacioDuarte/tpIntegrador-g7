@@ -1,8 +1,8 @@
 package ar.edu.unq.estacionamiento;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.*;
 
 import java.time.LocalTime;
 
@@ -14,26 +14,31 @@ import ar.edu.unq.compras.RecargaCelular;
 import ar.edu.unq.sem.SEM;
 import ar.edu.unq.sem.SistemaDeAsociaciones;
 import ar.edu.unq.zona.PuntoDeVenta;
+import ar.edu.unq.zona.Zona;
 
 
-public class EstacionamientoAppTest {
+public class EstacionamientoAppTest { 
 
 	private EstacionamientoApp estacionamientoApp;
 	private SistemaDeAsociaciones sistAsoc;
 	private PuntoDeVenta puntoDeVenta;
 	private Long nroCelularUser;
+	private Double saldo;
 	
 	
 	@Before
 	public void setUp() {
 		
+		SEM.clearSEM();
+		
 		sistAsoc = new SistemaDeAsociaciones();
 		SEM.getSEM().setSistemaDeAsociaciones(sistAsoc);
-		puntoDeVenta = mock(PuntoDeVenta.class);
+		puntoDeVenta = new PuntoDeVenta(mock(Zona.class));
 		nroCelularUser = 11509823l;
 		sistAsoc.agregarAlSistemaDePatentes(nroCelularUser, "BCD-234");
+		saldo = 50d;
 		
-		puntoDeVenta.recargarCelular(nroCelularUser, 50d);
+		puntoDeVenta.recargarCelular(nroCelularUser, saldo);
 		
 		estacionamientoApp = new EstacionamientoApp("BCD-234");
 		
@@ -48,23 +53,25 @@ public class EstacionamientoAppTest {
 		assertEquals(LocalTime.now().getHour(), estacionamientoApp.getHoraInicio().getHour());
 		assertEquals(LocalTime.now().getMinute(), estacionamientoApp.getHoraInicio().getMinute());
 		
+		assertEquals(saldo, sistAsoc.consultarSaldo(nroCelularUser));
+		
+		//assertTrue(sistAsoc.consultarSaldo(this.nroCelularUser).equals(50d));
+		
 	}
 	
 	
 	@Test
-	public void calculosTest() {
+	public void calculoHoraMaximaTest() {
 		
 		SEM.getSEM().setPrecioPorHora(50d);
 		
-		//System.out.println(estacionamientoApp.horaMaximaFin());
-		
-		//assertEquals(estacionamientoApp.getHoraInicio().plusHours(1).getHour(), estacionamientoApp.horaMaximaFin().getHour());
+		assertEquals(estacionamientoApp.getHoraInicio().plusHours(1).getHour(), estacionamientoApp.horaMaximaFin().getHour());
 		
 		//LocalTime horaActual = mock(LocalTime.class);
 		
-		when(LocalTime.now()).thenReturn(estacionamientoApp.getHoraInicio().plusHours(1));
+		//when(LocalTime.now()).thenReturn(estacionamientoApp.getHoraInicio().plusHours(1));
 		
-		assertEquals(50d, estacionamientoApp.costoActual());
+		//assertTrue(estacionamientoApp.costoActual().equals(50d));
 		
 	}
 	

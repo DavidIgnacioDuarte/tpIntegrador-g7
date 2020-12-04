@@ -1,5 +1,6 @@
 package ar.edu.unq.sem;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,10 +9,12 @@ import ar.edu.unq.compras.Compra;
 import ar.edu.unq.estacionamiento.Estacionamiento;
 import ar.edu.unq.inspector.Infraccion;
 import ar.edu.unq.observer.Observable;
+import ar.edu.unq.sensorDeHorario.SensorDeHorario;
 import ar.edu.unq.sensorDeVigencia.SensorDeVigencia;
 import ar.edu.unq.zona.Zona;
 
-public class SEM extends Observable implements SensorDeVigencia {
+public class SEM extends Observable implements SensorDeVigencia, SensorDeHorario {
+	
 	private Integer numeroDeControl = 0;
 	private static SEM sem;
 	private SistemaDeAsociaciones sistemaAsociaciones = new SistemaDeAsociaciones();
@@ -21,7 +24,22 @@ public class SEM extends Observable implements SensorDeVigencia {
 	private List<Zona> zonas = new ArrayList<Zona>();
 	private List<Infraccion> infracciones = new ArrayList<Infraccion>();
 	private List<Compra> compras = new ArrayList<Compra>();
-		
+	
+	private LocalTime horaDeFin;
+	
+	
+	public void finalizarEstacionamientosVigentes() {
+		estacionamientos.forEach(e -> this.notificar(e));
+		estacionamientos.clear();
+	}
+	
+	public LocalTime getHoraDeFin() {
+		return horaDeFin;
+	}
+	public void setHoraDeFin(LocalTime horaDeFin) {
+		this.horaDeFin = horaDeFin;
+	}
+
 	private SEM() {}
 	
 	public SistemaDeAsociaciones getSistemaDeAsociaciones() {
@@ -34,6 +52,10 @@ public class SEM extends Observable implements SensorDeVigencia {
 		}
 		
 		return sem;
+	}
+	
+	public static void clearSEM() {
+		sem = null;
 	}
 	
 	public void agregarEstacionamiento(Estacionamiento estacionamiento) {

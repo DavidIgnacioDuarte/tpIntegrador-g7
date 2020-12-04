@@ -15,6 +15,9 @@ class AppUsuarioTest {
 
 	@BeforeEach
 	void setUp() {
+		
+		SEM.clearSEM();
+		
 		app = new AppUsuario(1122334455L, "ABC-123");
 		app.activarAsistenciaAlUsuario();
 	}

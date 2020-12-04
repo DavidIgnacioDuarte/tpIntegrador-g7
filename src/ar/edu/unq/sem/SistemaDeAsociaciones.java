@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SistemaDeAsociaciones {
-	private Map<Long, Double> saldos = new HashMap<Long, Double>();
-	private Map<Long, String> patentes = new HashMap<Long, String>();
+	private Map<Long, Double> saldos = new HashMap<>();
+	private Map<Long, String> patentes = new HashMap<>();
 	
 	public void descontarSaldo(Long nroTelefono, Double saldo) {
 		saldos.replace(nroTelefono, this.consultarSaldo(nroTelefono) - saldo);
