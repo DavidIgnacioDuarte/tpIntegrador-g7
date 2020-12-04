@@ -12,6 +12,9 @@ public class SistemaDeAsociacionesTest {
 	
 	@BeforeEach
 	public void setUp() {
+		
+		SEM.clearSEM();
+		
 		nroRandom1 = 1234567890l;
 		saldo1 = 200d;
 	}

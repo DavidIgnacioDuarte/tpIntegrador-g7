@@ -16,6 +16,9 @@ class PuntoDeVentaTest {
 	
 	@BeforeEach
 	void setUp() {
+		
+		SEM.clearSEM();
+		
 		zona = mock(Zona.class);
 		pdv = new PuntoDeVenta(zona);
 	}

@@ -4,12 +4,17 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.sem.SEM;
+
 class ModoManualTest {
 	private ModoManual modo;
 	private AppUsuario app;
 	
 	@BeforeEach
 	void setUp(){
+		
+		SEM.clearSEM();
+		
 		modo = new ModoManual();
 		app = new AppUsuario(1122334455l, "ABC-123");
 		app.setModo(modo);

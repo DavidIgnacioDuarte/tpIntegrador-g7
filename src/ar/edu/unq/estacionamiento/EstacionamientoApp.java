@@ -29,7 +29,6 @@ public class EstacionamientoApp extends Estacionamiento {
 		return costo;
 	}
 	
-	
 	public Long getNroTelefono() {
 		return nroTelefono;
 	}

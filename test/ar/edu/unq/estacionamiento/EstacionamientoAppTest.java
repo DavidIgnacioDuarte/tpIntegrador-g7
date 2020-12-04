@@ -1,6 +1,7 @@
 package ar.edu.unq.estacionamiento;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
@@ -31,6 +32,8 @@ public class EstacionamientoAppTest {
 		
 		SEM.clearSEM();
 		
+		SEM.getSEM().setPrecioPorHora(50d);
+		
 		sistAsoc = new SistemaDeAsociaciones();
 		SEM.getSEM().setSistemaDeAsociaciones(sistAsoc);
 		puntoDeVenta = new PuntoDeVenta(mock(Zona.class));
@@ -55,8 +58,6 @@ public class EstacionamientoAppTest {
 		
 		assertEquals(saldo, sistAsoc.consultarSaldo(nroCelularUser));
 		
-		//assertTrue(sistAsoc.consultarSaldo(this.nroCelularUser).equals(50d));
-		
 	}
 	
 	
@@ -77,14 +78,27 @@ public class EstacionamientoAppTest {
 	
 	
 	@Test
-	public void informacionesInicioFin() {
+	public void calculoCostoTest() {
+		
+		EstacionamientoApp mockEstacionamiento = mock(EstacionamientoApp.class);
+		
+		when(mockEstacionamiento.getHoraInicio()).thenReturn(LocalTime.of(9, 30));
+		when(mockEstacionamiento.horaMaximaFin()).thenReturn(LocalTime.of(10, 30));
+		
+		assertFalse(mockEstacionamiento.costoActual().equals(50d));
+		
+	}
+	
+	
+	@Test
+	public void informacionInicioConSaldoYSinSaldo() {
 		
 		assertEquals(estacionamientoApp.informacionDeInicio(), "Inicio: " + estacionamientoApp.getHoraInicio().toString() + " - Hora máxima de fin: " +
 				estacionamientoApp.horaMaximaFin());	
 		
-		assertEquals(estacionamientoApp.informacionDeFin(), "Inicio: " + estacionamientoApp.getHoraInicio().toString() + " - Fin: " +
-				LocalTime.now() + " - Duración: " + (LocalTime.now().getHour() - estacionamientoApp.getHoraInicio().getHour()) + 
-				   " - Costo: " + estacionamientoApp.costoActual());
+		sistAsoc.descontarSaldo(nroCelularUser, 50d);
+		
+		assertEquals(estacionamientoApp.informacionDeInicio(), "Saldo insuficiente. Estacionamiento no permitido.");
 		
 	}
 	

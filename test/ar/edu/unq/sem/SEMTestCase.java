@@ -18,6 +18,9 @@ public class SEMTestCase {
 	
 	@BeforeEach
 	public void setUp() {
+		
+		SEM.clearSEM();
+		
 		sistemaAsoc = new SistemaDeAsociaciones();
 		SEM.getSEM().setSistemaDeAsociaciones(sistemaAsoc);
 	}

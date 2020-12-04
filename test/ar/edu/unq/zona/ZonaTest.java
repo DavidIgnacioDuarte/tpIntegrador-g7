@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.inspector.AppInspector;
+import ar.edu.unq.sem.SEM;
 
 class ZonaTest {
 	private Zona zona; 
@@ -14,6 +15,9 @@ class ZonaTest {
 	
 	@BeforeEach
 	void setUp() {
+		
+		SEM.clearSEM();
+		
 		pdv = mock(PuntoDeVenta.class);
 		inspector = mock(AppInspector.class);
 		zona = new Zona(inspector);
