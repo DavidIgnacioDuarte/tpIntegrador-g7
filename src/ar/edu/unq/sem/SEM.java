@@ -14,7 +14,7 @@ import ar.edu.unq.zona.Zona;
 public class SEM extends Observable implements SensorDeVigencia {
 	private Integer numeroDeControl = 0;
 	private static SEM sem;
-	private SistemaDeAsociaciones sistemaAsociaciones;
+	private SistemaDeAsociaciones sistemaAsociaciones = new SistemaDeAsociaciones();
 	private Double precioPorHora;
 	
 	private List<Estacionamiento> estacionamientos = new ArrayList<Estacionamiento>();

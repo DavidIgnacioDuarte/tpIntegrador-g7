@@ -28,13 +28,14 @@ class PuntoDeVentaTest {
 	@Test
 	void testRecargaDeSaldo() {
 		pdv.recargarCelular(1122334455l, 50d);
-		assertEquals(SEM.getSEM().getSistemaDeAsociaciones().consultarSaldo(1122334455L), 50d);
+		pdv.recargarCelular(1122334455l, 25d);
+		assertEquals(SEM.getSEM().getSistemaDeAsociaciones().consultarSaldo(1122334455L), 75d);
 	}
 	
 	@Test
 	void testInicioDeEstacionamiento() {
-		pdv.iniciarEstacionamiento("ABC-123", 3);
-		assertTrue(SEM.getSEM().esVigente("ABC-123"));
+		pdv.iniciarEstacionamiento("ABC-124", 3);
+		assertTrue(SEM.getSEM().esVigente("ABC-124"));
 	}
 
 }

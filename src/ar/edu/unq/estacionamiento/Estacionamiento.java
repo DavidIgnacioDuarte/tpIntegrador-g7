@@ -22,7 +22,7 @@ public abstract class Estacionamiento {
 	
 	
 	public String getPatente() {
-		return patente;
+		return this.patente;
 	}
 	public void setPatente(String patente) {
 		this.patente = patente;

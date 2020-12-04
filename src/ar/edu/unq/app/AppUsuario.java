@@ -25,7 +25,12 @@ public class AppUsuario implements MovementSensor, CambioDeZona{
 		modo.driving(this);
 	}
 	
+	public void setModo(AppStrategy modo) {
+		this.modo = modo;
+	}
+	
 	public void iniciarEstacionamiento() {
+		SEM.getSEM().getSistemaDeAsociaciones().agregarAlSistemaDePatentes(this.nroCelular,this.patente);
 		SEM.getSEM().agregarEstacionamiento(new EstacionamientoApp(patente));
 	}
 	
