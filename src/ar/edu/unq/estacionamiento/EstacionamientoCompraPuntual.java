@@ -16,7 +16,7 @@ public class EstacionamientoCompraPuntual extends Estacionamiento {
 	
 	@Override
 	public LocalTime horaMaximaFin() {
-		return this.getHoraInicio().minusHours(this.habilitacionCompra.getHorasCompradas()); 
+		return this.getHoraInicio().plusHours(this.habilitacionCompra.getHorasCompradas()); 
 	}
 	
 	public CompraPuntual getHabilitacionCompra() {
